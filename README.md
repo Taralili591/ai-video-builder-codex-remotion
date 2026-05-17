@@ -12,15 +12,34 @@ This repo is a practical tutorial, not a big framework. The idea is simple:
 6. Let Codex turn the description into editable Remotion code.
 7. Preview in the browser and keep revising.
 
+## Why This Is Useful
+
+This workflow helps you quickly create animated explanations for complex ideas.
+
+Traditionally, if you want to explain a concept like "what is a GPU" with motion graphics, you may need to spend a long time in After Effects: drawing diagrams, arranging layers, animating paths, adjusting timing, and then restyling everything to match your brand or visual system. Even a simple polished explainer can take a full day.
+
+With Codex + Remotion, you can describe the visual idea in plain language, reuse a video style standard, preview the result in the browser, and often get a usable first version in under 15 minutes.
+
+This is especially useful for abstract technical topics that are hard to explain with talking-head video alone:
+
+- "Why CUDA made GPUs useful for AI"
+- "What is a GPU?"
+- "What is the Transformer architecture?"
+- "What is deep learning?"
+- "What is backpropagation?"
+- "How do Git, GitHub, and SSH work together?"
+
+The useful part is not only speed. It is repeatability:
+
+- You can define brand colors, typography, card style, background style, and motion rules once.
+- You can reuse that visual system across future videos.
+- You can edit the animation as code instead of manually rebuilding layers.
+- You can ask Codex to adjust the layout, timing, labels, and diagrams.
+- You can render the base animation, then finish the pacing, voiceover, subtitles, and music in Final Cut Pro or CapCut/Jianying.
+
 ## What You Will Build
 
-A code-rendered technical video. The sample project explains a beginner developer concept, but the workflow works especially well for AI and programming education:
-
-- "What is a terminal?"
-- "Why CUDA made GPUs useful for AI"
-- "What is an API?"
-- "How GitHub, Git, and SSH work together"
-- "How Codex edits a project"
+A code-rendered technical video. The sample project explains a beginner developer concept, but the workflow works especially well for AI and programming education.
 
 ## Prerequisites
 
@@ -156,35 +175,3 @@ When matching the video to a voiceover, use the editor for timing:
 Example: if the CUDA cable animation finishes before the sentence "CUDA opened a programming door for the GPU" is done, freeze the final connected frame for 1-2 seconds so the visual stays on screen while the narration lands.
 
 More details: [`docs/tutorial.md`](docs/tutorial.md)
-
-## Repo Contents
-
-```text
-.
-├── docs/
-│   ├── tutorial.md
-│   ├── video-standard.md
-│   ├── prompt-playbook.md
-│   └── technical-design.md
-├── examples/
-│   ├── gpu-cuda-scene.md
-│   ├── sample-brief.md
-│   ├── generated-video-plan.json
-│   └── codex-task.md
-├── src/
-│   ├── Root.tsx
-│   ├── Video.tsx
-│   ├── videoPlan.ts
-│   └── style.ts
-└── package.json
-```
-
-## Why This Is Useful
-
-This workflow is powerful because the final video is code:
-
-- You can preview it in a browser.
-- You can edit every scene.
-- You can reuse a visual standard.
-- You can version it on GitHub.
-- You can ask Codex to improve the code, not just rewrite text.
