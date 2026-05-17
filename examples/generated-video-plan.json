@@ -1,0 +1,24 @@
+{
+  "title": "What Is a Terminal?",
+  "audience": "Beginner AI tool users who want to start coding",
+  "learningGoal": "Make the terminal feel understandable and useful instead of intimidating",
+  "scenes": [
+    {
+      "id": "hook",
+      "title": "The Terminal Looks Scary",
+      "narration": "If you are new to coding, the terminal can look like a secret door with no handle.",
+      "visualPrompt": "A beginner developer looking at a blank command line, with simple labels that explain what is happening.",
+      "durationInSeconds": 5,
+      "accent": "#36C5F0"
+    },
+    {
+      "id": "definition",
+      "title": "It Is Just a Text Door",
+      "narration": "A terminal is a text-based way to talk to your computer. You type a command, and the computer answers.",
+      "visualPrompt": "A clean diagram showing user input, a command, the operating system, and a response.",
+      "durationInSeconds": 7,
+      "accent": "#10A37F"
+    }
+  ]
+}
+
