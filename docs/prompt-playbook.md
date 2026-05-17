@@ -1,81 +1,85 @@
 # Prompt Playbook
 
-Use these prompts to turn the repo into a repeatable AI video workflow.
+These are copy-paste prompts for making videos with Codex CLI and Remotion.
 
-## Planner Prompt
+## Create a New Video Project
 
 ```text
-You are an AI video planner for beginner developer education.
-
-Create a structured video plan from the brief below.
-
-Rules:
-- Use simple language.
-- Each scene should teach one idea.
-- Avoid jargon unless the scene explains it.
-- Make visual directions concrete enough for a designer or Remotion developer.
-- Keep the total duration under 60 seconds.
-
-Return JSON with:
-- title
-- audience
-- learningGoal
-- scenes
-
-Each scene must include:
-- id
-- title
-- narration
-- visualPrompt
-- durationInSeconds
-- accent
-
-Brief:
-{{brief}}
+Create a new Remotion project folder named {{projectName}}.
+Use it to make a technical explainer video about: {{topic}}.
+Install dependencies, add npm scripts for preview, render, and typecheck, then run the first typecheck.
+Keep the project clean and easy to publish on GitHub.
 ```
 
-## Codex Implementation Prompt
+## Create the Video Standard
 
 ```text
-Apply this video plan to the Remotion project.
+Before making the video, create a video standard file.
 
-Tasks:
-1. Update src/videoPlan.ts.
-2. Keep the existing component structure unless the plan requires a new layout.
-3. Make sure scene text fits inside the frame.
-4. Run npm run typecheck.
-5. Summarize the files changed and any follow-up improvements.
+Use this standard for every scene:
+- Theme colors: black text, warm off-white background, OpenAI green accent, blue secondary accent.
+- Font: clean modern sans-serif.
+- Card style: floating cards with subtle gradient, light shadow, 8px radius.
+- Overall style: clean GitHub-style technical tutorial, simple diagrams, beginner-friendly.
+- Background: transparent-friendly layout, no noisy decoration.
+- Motion: calm transitions, no excessive animation.
 
-Video plan:
-{{videoPlan}}
+After this, do not ask me to repeat these style requirements. Apply them by default to all later scenes.
 ```
 
-## Revision Prompt
+## Turn a Mental Image into a Scene
 
 ```text
-Revise the current video for clarity.
+Make a Remotion scene for this sentence:
+"{{sentence}}"
+
+Visual description:
+{{describe the picture in your head}}
+
+Use the video standard we already created.
+Keep it simple and readable.
+```
+
+## GPU / CUDA Example
+
+```text
+Make a scene for this sentence:
+"CUDA opened a programming door for the GPU."
+
+Visual description:
+On the left, show a simple GPU chip icon.
+A cable comes out from the chip.
+Next to the cable, show many 0s and 1s to represent binary computation and programming.
+Make it simple, not too complex.
+Use the video standard we already created.
+```
+
+## Simplify a Scene
+
+```text
+This scene is too complicated.
+Simplify the shapes, reduce the number of elements, and make the main idea obvious in three seconds.
+Keep the same video standard.
+```
+
+## Revise the Composition
+
+```text
+Revise the current Remotion composition.
 
 Focus on:
-- beginner comprehension
-- shorter narration
-- stronger visual direction
-- one idea per scene
+- clearer layout
+- fewer elements
+- stronger visual metaphor
+- readable text
+- calm motion
 
-Do not change the total number of scenes.
+Run npm run typecheck after editing.
 ```
 
-## Evaluation Prompt
+## Open Preview
 
 ```text
-Review this video plan as a developer educator.
-
-Score it from 1 to 5 on:
-- clarity
-- technical accuracy
-- beginner friendliness
-- visual specificity
-- usefulness for developers
-
-Then suggest the smallest set of edits that would improve it.
+Start the Remotion preview server and open the preview in the browser.
 ```
 

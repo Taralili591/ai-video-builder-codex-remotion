@@ -1,62 +1,129 @@
 # AI Video Builder with Codex + Remotion
 
-A developer-experience sample project that shows how Codex and Remotion can turn a plain-language video idea into a structured, editable, code-rendered video.
+Use Codex CLI and Remotion to make technical explainer videos from natural-language visual descriptions.
 
-This project is designed as a technical documentation and demo repo for AI builders who want to understand how large language models can help create software, not just text. It demonstrates a workflow where a user writes an idea, Codex helps design the video plan and edit the code, and Remotion renders the final video with React components.
+This repo is a practical tutorial, not a big framework. The idea is simple:
 
-## Why This Project Exists
+1. Install Codex CLI.
+2. Ask Codex to install Remotion.
+3. Ask Codex to create a video project folder.
+4. Define the video style once.
+5. Describe the picture in your head.
+6. Let Codex turn the description into editable Remotion code.
+7. Preview in the browser and keep revising.
 
-Many new AI builders get stuck between three worlds:
+## What You Will Build
 
-- They can describe an idea in natural language.
-- They can use AI chat tools to generate scripts or copy.
-- But they do not know how to turn that idea into a repeatable software workflow.
+A code-rendered technical video. The sample project explains a beginner developer concept, but the workflow works especially well for AI and programming education:
 
-This project uses video creation as the example because it is visual, practical, and easy to understand. The real lesson is broader: a model can help translate messy user intent into structured data, editable code, and a working product experience.
+- "What is a terminal?"
+- "Why CUDA made GPUs useful for AI"
+- "What is an API?"
+- "How GitHub, Git, and SSH work together"
+- "How Codex edits a project"
 
-## What It Demonstrates
+## Prerequisites
 
-- How to decompose a video idea into a script, scenes, visual directions, and timing.
-- How Codex can help turn those structured decisions into a Remotion composition.
-- How a generated video can remain editable because the output is code and data, not a black-box export.
-- How to design an AI workflow that is understandable to beginner developers.
+- Node.js 20+
+- npm
+- Git
+- Codex CLI
 
-## Demo Concept
-
-The sample video explains a beginner developer concept: "What is a terminal?"
-
-The repo includes:
-
-- A Remotion composition in `src/`.
-- A structured scene plan in `src/videoPlan.ts`.
-- Example AI planning artifacts in `examples/`.
-- A technical design document in `docs/technical-design.md`.
-- A tutorial for using Codex to extend the project in `docs/tutorial.md`.
-
-## Quick Start
+Install Codex CLI:
 
 ```bash
-npm install
-npm run preview
+npm install -g @openai/codex@latest
+codex
 ```
 
-Then open the Remotion preview URL shown in your terminal.
+Official Codex repository: <https://github.com/openai/codex>
 
-To render the sample video:
+## Fast Tutorial
+
+### 1. Start Codex CLI
+
+```bash
+codex
+```
+
+### 2. Ask Codex to create the project
+
+Copy this into Codex:
+
+```text
+Create a new Remotion project folder named gpu-ai-video.
+Use it to make a technical explainer video about: Why CUDA made GPUs useful for AI.
+Install the dependencies, add npm scripts for preview and render, and run the first typecheck.
+```
+
+### 3. Ask Codex to open Remotion in the browser
+
+```text
+Start the Remotion preview server and open it in the browser.
+```
+
+### 4. Define the video standard once
+
+Before making scenes, give Codex a reusable style standard:
+
+```text
+Before making the video, create a video standard file.
+
+Use this standard for every scene:
+- Theme colors: black text, warm off-white background, OpenAI green accent, blue secondary accent.
+- Font: clean modern sans-serif.
+- Card style: floating cards with subtle gradient, light shadow, 8px radius.
+- Overall style: clean GitHub-style technical tutorial, simple diagrams, beginner-friendly.
+- Background: transparent-friendly layout, no noisy decoration.
+- Motion: calm transitions, no excessive animation.
+
+After this, do not ask me to repeat these style requirements. Apply them by default to all later scenes.
+```
+
+### 5. Describe the scene in plain language
+
+Now describe the image in your head. Do not try to write code first.
+
+Example:
+
+```text
+Make a scene for this sentence: "CUDA opened a programming door for the GPU."
+
+Visual description:
+On the left, show a simple GPU chip icon.
+A cable comes out from the chip.
+Next to the cable, show many 0s and 1s to represent binary computation and programming.
+Make it simple, not too complex.
+Use the video standard we already created.
+```
+
+Codex should translate this into Remotion components: chip shape, cable line, binary digits, labels, timing, and animation.
+
+### 6. Revise by describing what feels wrong
+
+```text
+This scene is too complicated.
+Make the GPU icon larger, reduce the number of binary digits, and make the cable look like one clean programming path.
+Keep the same style standard.
+```
+
+### 7. Render
 
 ```bash
 npm run render
 ```
 
-## Project Structure
+## Repo Contents
 
 ```text
 .
 ├── docs/
-│   ├── technical-design.md
 │   ├── tutorial.md
-│   └── prompt-playbook.md
+│   ├── video-standard.md
+│   ├── prompt-playbook.md
+│   └── technical-design.md
 ├── examples/
+│   ├── gpu-cuda-scene.md
 │   ├── sample-brief.md
 │   ├── generated-video-plan.json
 │   └── codex-task.md
@@ -65,22 +132,16 @@ npm run render
 │   ├── Video.tsx
 │   ├── videoPlan.ts
 │   └── style.ts
-├── package.json
-└── README.md
+└── package.json
 ```
 
-## Intended Audience
+## Why This Is Useful
 
-- Beginner developers learning how AI coding agents fit into a software workflow.
-- Content creators who want to build repeatable video systems.
-- Developer advocates creating demos for AI products.
-- Teams exploring how OpenAI models and Codex-style workflows can convert ideas into software.
+This workflow is powerful because the final video is code:
 
-## Next Milestones
-
-- Add a CLI that converts a plain-language brief into `videoPlan.ts`.
-- Add model-generated narration and captions.
-- Add branded visual templates.
-- Add a browser UI for editing scenes before rendering.
-- Add evaluation checks for script clarity, timing, and visual consistency.
+- You can preview it in a browser.
+- You can edit every scene.
+- You can reuse a visual standard.
+- You can version it on GitHub.
+- You can ask Codex to improve the code, not just rewrite text.
 

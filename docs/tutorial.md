@@ -1,87 +1,164 @@
-# Tutorial: Build a Video with Codex and Remotion
+# Tutorial: Make a Technical Video with Codex CLI and Remotion
 
-This tutorial shows how a developer can use the repo as a repeatable workflow.
+This is the real workflow I use for AI technical explainer videos.
 
-## Step 1: Write a Brief
+The goal is not to build a complicated video platform. The goal is to let Codex help you turn the picture in your head into Remotion code.
 
-Start with a short brief like this:
-
-```text
-Create a 45-second beginner-friendly video explaining what a terminal is.
-Audience: people who use AI tools but have never coded before.
-Tone: clear, warm, practical.
-Goal: make the terminal feel less intimidating.
-```
-
-## Step 2: Ask the Model for a Video Plan
-
-Ask for structured output instead of a loose script:
-
-```text
-Turn this brief into a video plan with 5 scenes.
-For each scene include:
-- title
-- narration
-- visual prompt
-- duration in seconds
-- accent color
-Keep the language simple and beginner-friendly.
-```
-
-## Step 3: Give Codex an Implementation Task
-
-Use Codex to apply the plan to the codebase:
-
-```text
-Update src/videoPlan.ts with this video plan.
-Then adjust src/Video.tsx if needed so the composition still looks balanced.
-Run the typecheck and tell me what changed.
-```
-
-## Step 4: Preview the Video
+## Step 1: Install Codex CLI
 
 ```bash
-npm run preview
+npm install -g @openai/codex@latest
+codex
 ```
 
-Look for:
+If `codex` opens an interactive terminal session, you are ready.
 
-- text that overflows
-- scenes that feel too long or too short
-- narration that is too abstract
-- visuals that do not match the teaching goal
+## Step 2: Ask Codex to Install Remotion
 
-## Step 5: Iterate
-
-Good revision prompts are specific:
+Inside Codex, say:
 
 ```text
-Scene 2 is still too abstract. Make the terminal analogy more concrete.
-Keep the scene duration the same and update only the narration and visual prompt.
+Install Remotion for this project.
+Create a clean starter project that can preview and render a video.
+Add npm scripts for preview, render, and typecheck.
+Run the first typecheck after setup.
+```
+
+Codex should create or update files such as:
+
+- `package.json`
+- `src/index.ts`
+- `src/Root.tsx`
+- `src/Video.tsx`
+
+## Step 3: Ask Codex to Open Remotion in the Browser
+
+Say:
+
+```text
+Start the Remotion preview server and open the preview in the browser.
+```
+
+Then use the browser preview as your visual feedback loop. If something looks wrong, describe the problem to Codex in plain language.
+
+## Step 4: Create a New Video Project Folder
+
+Say:
+
+```text
+Create a new project folder named xxx.
+Use it to make a video about: xxx.
+Keep the folder clean and easy to publish on GitHub.
+```
+
+Example:
+
+```text
+Create a new project folder named gpu-ai-video.
+Use it to make a video about: Why CUDA made GPUs useful for AI.
+Keep the folder clean and easy to publish on GitHub.
+```
+
+## Step 5: Define the Video Standard First
+
+Before making scenes, define the visual standard once. This prevents you from repeating design instructions for every scene.
+
+Say:
+
+```text
+Before making the video, create a video standard file.
+
+Use this standard for every scene:
+- Theme colors: black text, warm off-white background, OpenAI green accent, blue secondary accent.
+- Font: clean modern sans-serif.
+- Card style: floating cards with subtle gradient, light shadow, 8px radius.
+- Overall style: clean GitHub-style technical tutorial, simple diagrams, beginner-friendly.
+- Background: transparent-friendly layout, no noisy decoration.
+- Motion: calm transitions, no excessive animation.
+
+After this, do not ask me to repeat these style requirements. Apply them by default to all later scenes.
+```
+
+The standard can live in `docs/video-standard.md` or in a `src/style.ts` file.
+
+## Step 6: Describe the Picture in Your Head
+
+Do not start by asking for code. Start with the visual idea.
+
+Example sentence:
+
+```text
+CUDA opened a programming door for the GPU.
+```
+
+Your visual description:
+
+```text
+Make a scene for this sentence: "CUDA opened a programming door for the GPU."
+
+Visual description:
+On the left, show a simple GPU chip icon.
+A cable comes out from the chip.
+Next to the cable, show many 0s and 1s to represent binary computation and programming.
+Make it simple, not too complex.
+Use the video standard we already created.
+```
+
+Codex should convert this into Remotion code:
+
+- GPU chip icon
+- cable line
+- binary digits
+- simple labels
+- timing
+- animation
+
+## Step 7: Revise Like a Director
+
+You do not need to know the exact CSS or React code. Tell Codex what feels wrong.
+
+Good revision prompts:
+
+```text
+This scene is too complicated.
+Make the GPU icon larger, reduce the number of binary digits, and make the cable look like one clean programming path.
+Keep the same style standard.
 ```
 
 ```text
-The video feels too text-heavy. Make the visual direction cards shorter and add stronger scene titles.
+The left side feels empty.
+Move the GPU chip slightly toward the center and add a small CUDA label above the cable.
 ```
 
-## Step 6: Render
+```text
+The animation is too flashy.
+Make the binary numbers fade in slowly instead of flying in.
+```
+
+## Step 8: Render the Video
 
 ```bash
 npm run render
 ```
 
-The rendered file will be written to `out/ai-video-builder-demo.mp4`.
+The rendered video usually appears in the `out/` folder.
 
-## What Developers Learn
+## The Core Pattern
 
-This project teaches a full loop:
+The whole workflow is:
 
-- natural language brief
-- structured model output
-- code changes through Codex
-- preview
-- revision
-- render
+```text
+Install Codex CLI
+→ ask Codex to install Remotion
+→ open Remotion preview in browser
+→ create a video project folder
+→ define the video standard once
+→ describe each scene in natural language
+→ let Codex write Remotion code
+→ preview
+→ revise
+→ render
+```
 
-That loop is the core of many AI software workflows.
+That is the point of this project: Codex is not only writing code. It is helping turn a mental image into editable software.
 
