@@ -113,6 +113,50 @@ Keep the same style standard.
 npm run render
 ```
 
+By default, the rendered video is here:
+
+```text
+out/ai-video-builder-demo.mp4
+```
+
+Open it on macOS:
+
+```bash
+open out/ai-video-builder-demo.mp4
+```
+
+### 8. Continue Editing in Final Cut Pro or CapCut/Jianying
+
+Remotion is best for generating the coded motion graphics. Final Cut Pro or CapCut/Jianying is better for final editing: trimming, music, voiceover, sound effects, captions, and platform-specific exports.
+
+Final Cut Pro:
+
+1. Open Final Cut Pro.
+2. Create a new Library or open an existing one.
+3. Create a new Project with the same format as your Remotion export, usually 1920 x 1080 or 1080 x 1920.
+4. Drag `out/ai-video-builder-demo.mp4` into the media browser or timeline.
+5. Add voiceover, music, sound effects, captions, and final cuts.
+
+CapCut/Jianying:
+
+1. Open CapCut or Jianying.
+2. Create a new project.
+3. Import `out/ai-video-builder-demo.mp4`.
+4. Add subtitles, voiceover, music, stickers, zooms, and platform-specific formatting.
+5. Export the final version for Douyin, Xiaohongshu, Bilibili, YouTube, or TikTok.
+
+When matching the video to a voiceover, use the editor for timing:
+
+- Split the video when the narration moves to a new idea.
+- Slow down clips when a diagram needs more time to read.
+- Speed up only simple transition clips.
+- Add a freeze frame / hold frame when the visual is already correct but the narration needs more time.
+- Add subtitles after the timing is locked.
+
+Example: if the CUDA cable animation finishes before the sentence "CUDA opened a programming door for the GPU" is done, freeze the final connected frame for 1-2 seconds so the visual stays on screen while the narration lands.
+
+More details: [`docs/tutorial.md`](docs/tutorial.md)
+
 ## Repo Contents
 
 ```text
@@ -144,4 +188,3 @@ This workflow is powerful because the final video is code:
 - You can reuse a visual standard.
 - You can version it on GitHub.
 - You can ask Codex to improve the code, not just rewrite text.
-

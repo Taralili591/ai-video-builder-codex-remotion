@@ -143,6 +143,136 @@ npm run render
 
 The rendered video usually appears in the `out/` folder.
 
+In this demo repo, the default output path is:
+
+```text
+out/ai-video-builder-demo.mp4
+```
+
+Open the rendered video on macOS:
+
+```bash
+open out/ai-video-builder-demo.mp4
+```
+
+If you changed the render command in `package.json`, check the output path there.
+
+## Step 9: Finish the Video in Final Cut Pro or CapCut/Jianying
+
+Remotion is where you generate the clean coded animation. You can do the final creative edit in a normal video editor.
+
+Use Final Cut Pro or CapCut/Jianying for:
+
+- trimming
+- voiceover
+- music
+- sound effects
+- subtitles
+- speed changes
+- hold frames / freeze frames
+- platform-specific aspect ratios
+- final export settings
+
+### Final Cut Pro
+
+1. Open Final Cut Pro.
+2. Create a new Library or open an existing one.
+3. Create a new Project.
+4. Use the same resolution as the Remotion render, usually 1920 x 1080 for landscape or 1080 x 1920 for vertical.
+5. Drag `out/ai-video-builder-demo.mp4` into the media browser or directly into the timeline.
+6. Add narration, captions, music, sound effects, and final cuts.
+7. Export the final video.
+
+To match a voiceover:
+
+1. Put the voiceover track under the Remotion video.
+2. Cut the video at the point where the narration changes idea.
+3. If a visual moves too fast, select that clip and slow it down with retiming.
+4. If you need the visual to stay on screen while the narration finishes, add a hold frame / freeze frame at the end of that clip.
+5. If the narration moves quickly, trim the dead space or speed up the clip slightly.
+6. Watch the video once without looking at the timeline. The visual should change when the spoken idea changes.
+
+### CapCut / Jianying
+
+1. Open CapCut or Jianying.
+2. Create a new project.
+3. Import `out/ai-video-builder-demo.mp4`.
+4. Add subtitles, voiceover, music, stickers, zooms, and final pacing edits.
+5. Export the final version for Douyin, Xiaohongshu, Bilibili, YouTube, or TikTok.
+
+To match a voiceover:
+
+1. Import the voiceover and place it under the video.
+2. Split the video wherever the narration moves to a new point.
+3. Use speed adjustment to slow down a clip if the viewer needs more time to understand the diagram.
+4. Use freeze frame / hold frame when a diagram should remain visible while you finish explaining it.
+5. Use speed-up only for simple transition moments, not for important explanations.
+6. Add captions after the timing feels right, otherwise every timing change will force you to fix subtitles again.
+
+## Step 10: Use Speed and Freeze Frames to Match Voiceover
+
+For technical videos, the animation should follow the voiceover, not the other way around.
+
+A good editing pattern is:
+
+```text
+one spoken idea = one visual beat
+```
+
+Use speed changes when the animation is correct but the timing is wrong:
+
+- Slow down a clip when the diagram needs more reading time.
+- Speed up a clip when it is only a transition.
+- Avoid speeding up scenes with important text.
+
+Use freeze frames when the visual already reached the right state but the narration needs more time:
+
+- Freeze on a completed diagram while explaining the key idea.
+- Freeze on a code snippet while reading the important line.
+- Freeze on a comparison table while summarizing the difference.
+
+Example:
+
+```text
+Narration: "CUDA opened a programming door for the GPU."
+Visual: the cable finishes connecting the GPU chip to the binary numbers too early.
+Edit: freeze the final connected frame for 1-2 seconds while the sentence finishes.
+```
+
+Another example:
+
+```text
+Narration: "Before CUDA, using GPU power for general programming was much harder."
+Visual: the old workflow diagram appears too quickly.
+Edit: slow that clip to 70 percent, then cut to the CUDA scene on the word "CUDA."
+```
+
+Do this after rendering from Remotion:
+
+1. Render the clean animation from Remotion.
+2. Import the mp4 into Final Cut Pro or CapCut/Jianying.
+3. Add the voiceover.
+4. Split the video by spoken ideas.
+5. Use speed changes and freeze frames to make each idea land.
+6. Add captions after the timing is locked.
+
+## Optional: Render for Vertical Video
+
+If you want to make short-form vertical content, change the Remotion composition size to 1080 x 1920.
+
+In this repo, that means updating `src/videoPlan.ts`:
+
+```ts
+export const VIDEO_WIDTH = 1080;
+export const VIDEO_HEIGHT = 1920;
+```
+
+Then run:
+
+```bash
+npm run render
+```
+
 ## The Core Pattern
 
 The whole workflow is:
@@ -158,7 +288,7 @@ Install Codex CLI
 → preview
 → revise
 → render
+→ finish editing in Final Cut Pro or CapCut/Jianying
 ```
 
 That is the point of this project: Codex is not only writing code. It is helping turn a mental image into editable software.
-

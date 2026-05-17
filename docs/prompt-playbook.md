@@ -83,3 +83,37 @@ Run npm run typecheck after editing.
 Start the Remotion preview server and open the preview in the browser.
 ```
 
+## Render and Locate the Output
+
+```text
+Render the Remotion video.
+After rendering, tell me the exact output file path and the command I can use to open it on macOS.
+```
+
+## Prepare for Final Cut Pro or CapCut/Jianying
+
+```text
+Prepare this Remotion video for editing in Final Cut Pro or CapCut/Jianying.
+Tell me:
+1. where the rendered mp4 file is
+2. the project resolution and frame rate
+3. whether it is landscape or vertical
+4. what final edits should be done in the video editor instead of Remotion
+```
+
+## Match Video Timing to Voiceover
+
+```text
+I imported the rendered Remotion video into Final Cut Pro or CapCut/Jianying.
+Help me match it to the voiceover.
+
+For each spoken idea, tell me whether I should:
+- cut the clip
+- slow it down
+- speed it up
+- add a freeze frame / hold frame
+- leave it as is
+
+Voiceover transcript:
+{{paste transcript}}
+```
